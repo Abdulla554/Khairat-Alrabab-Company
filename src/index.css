@@ -1,0 +1,38 @@
+/* src/index.css */
+@import "tailwindcss";
+
+/* Color Palette Variables */
+:root {
+  --royal-gold: #c9a227;
+  --warm-gold: #f1c40f;
+  --creamy-white: #f8f1e7;
+  --dark-brown: #5c3d2e;
+  --warm-beige: #e6d5b8;
+  --golden-beige: #d5b99d;
+  --warm-gray: #a49e94;
+
+  /* Added Secondary Colors */
+  --metallic-gray: #a49e94; /* Warm Gray */
+}
+
+/* Example usage of the color palette */
+body {
+  background-color: var(--creamy-white);
+  color: var(--dark-brown);
+}
+
+h1,
+h2,
+h3 {
+  color: var(--royal-gold);
+}
+
+.button {
+  background-color: var(--warm-gold);
+  color: var(--creamy-white);
+}
+
+.card {
+  background-color: var(--warm-beige);
+  border: 1px solid var(--warm-gray);
+}
