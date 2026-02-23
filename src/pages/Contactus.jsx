@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Phone,
@@ -14,7 +14,13 @@ import { useTranslation } from "react-i18next";
 function Contactus() {
   const { t, i18n } = useTranslation();
   const isAr = i18n.language === "ar";
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
   const contactDetails = [
     { icon: Phone, title: t("Phone Number"), content: t("contactPhone") },
     { icon: Mail, title: t("Email Address"), content: t("contactEmail") },

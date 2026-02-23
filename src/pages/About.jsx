@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
@@ -18,7 +18,13 @@ import {
 
 const About = () => {
   const { t } = useTranslation();
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
   const visionPoints = [t("visionPoints.v1"), t("visionPoints.v2"), t("visionPoints.v3")];
   const missionPoints = [t("missionPoints.m1"), t("missionPoints.m2"), t("missionPoints.m3"), t("missionPoints.m4")];
   const competitivePoints = [t("competitivePoints.c1"), t("competitivePoints.c2"), t("competitivePoints.c3"), t("competitivePoints.c4")];

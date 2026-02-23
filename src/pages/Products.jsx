@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
 import { Building2, Factory } from "lucide-react";
@@ -27,7 +27,13 @@ const Products = () => {
       badge: "projectType2",
     },
   ];
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
   return (
     <div className="min-h-screen bg-[#050816] text-white">
       {/* Hero */}

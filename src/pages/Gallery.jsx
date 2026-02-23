@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ImageIcon, ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
@@ -7,7 +7,13 @@ import { motion } from "motion/react";
 const Gallery = () => {
   const { t, i18n } = useTranslation();
   const isAr = i18n.language === "ar";
-
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
   const images = ["1p1.jpeg", "2p1.jpeg", "3p1.jpeg", "1p2.jpeg", "2p2.jpeg", "3p2.jpeg"];
 
   return (
