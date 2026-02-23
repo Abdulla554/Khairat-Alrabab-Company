@@ -2,7 +2,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Clock, MapPin, Mail, Phone } from "lucide-react";
+import { FaFacebookF, FaInstagram } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+
+const SOCIAL_LINKS = [
+  { href: "https://www.facebook.com/share/1FmUy3wsmt/", icon: FaFacebookF, label: "Facebook" },
+  { href: "https://www.instagram.com/khayrat_alrabab?igsh=N2R1d3JtbGhxZ3Jw", icon: FaInstagram, label: "Instagram" },
+];
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -85,6 +91,22 @@ const Footer = () => {
               <Phone className="w-5 h-5 text-[#2F6FB0]/80 shrink-0" />
               <span>{t("contactPhone")}</span>
             </a>
+            {/* مواقع التواصل */}
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#4A86C5] pt-4 pb-2">{t("footer.social")}</p>
+            <div className="flex items-center gap-3">
+              {SOCIAL_LINKS.map(({ href, icon: Icon, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-[#AFC3D6] hover:text-white hover:border-[#2F6FB0]/50 hover:bg-[#2F6FB0]/10 transition-all duration-300"
+                  aria-label={label}
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

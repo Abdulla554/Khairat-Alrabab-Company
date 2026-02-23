@@ -1,142 +1,236 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { useTranslation } from "react-i18next";
-import {
-  Construction,
-  HardHat,
-  Truck,
-  Building2,
-  Home,
-  Mail,
-  ImageIcon,
-} from "lucide-react";
-
-const GOLD = "#C9A227";
-
-const activities = [
-  { keyTitle: "st1", keyDesc: "scope1Desc", icon: HardHat },
-  { keyTitle: "st2", keyDesc: "scope2Desc", icon: Truck },
-  { keyTitle: "st3", keyDesc: "scope3Desc", icon: Building2 },
-];
+import { Building2, Factory } from "lucide-react";
 
 const Products = () => {
   const { t, i18n } = useTranslation();
   const isAr = i18n.language === "ar";
 
+  const images = ["1p1.jpeg", "2p1.jpeg", "3p1.jpeg", "1p2.jpeg", "2p2.jpeg", "3p2.jpeg"];
+  const projectImages = [
+    ["1p1.jpeg", "1p2.jpeg", "2p1.jpeg"],
+    ["2p2.jpeg", "3p1.jpeg", "3p2.jpeg"],
+  ];
+
+  const projects = [
+    {
+      keyTitle: "project1Title",
+      keyDesc: "project1Description",
+      icon: Building2,
+      badge: "projectType1",
+    },
+    {
+      keyTitle: "project2Title",
+      keyDesc: "project2Description",
+      icon: Factory,
+      badge: "projectType2",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-[#0B1624] text-white">
+    <div className="min-h-screen bg-[#050816] text-white">
       {/* Hero */}
-      <section className="relative py-20 md:py-28 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0E2A47]/60 to-[#0B1624]" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/60 to-transparent" />
-        <div className="relative max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#0F1F33] border border-white/10 mb-6"
-            style={{ boxShadow: "0 0 0 1px rgba(201,162,39,0.1)" }}
-          >
-            <Construction className="w-8 h-8 text-[#C9A227]" />
-          </motion.div>
-          <motion.h1
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight"
-          >
-            {t("projects")}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-[#AFC3D6] text-lg md:text-xl max-w-2xl mx-auto"
-          >
-            {t("projectsIntro")}
-          </motion.p>
+      <section className="relative border-b border-white/5 bg-gradient-to-b from-[#050816] via-[#050816] to-[#02040b] px-4 pb-16 pt-24 md:px-10 md:pt-28">
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute inset-x-0 top-24 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
         </div>
-      </section>
 
-      {/* Activity areas — 3 cards */}
-      <section className="relative px-4 md:px-8 py-16 md:py-20">
-        <div className="max-w-6xl mx-auto">
-          <p className="text-center text-[#4A86C5] font-bold text-2xl md:text-3xl mb-12">
-            {t("serves")}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {activities.map((item, index) => (
-              <motion.div
-                key={item.keyTitle}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                className="group rounded-2xl border border-white/10 bg-[#0F1F33]/80 backdrop-blur-sm p-8 flex flex-col items-center text-center min-h-[280px] justify-center hover:border-[#C9A227]/30 transition-all duration-300"
-              >
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center bg-white/[0.04] ring-1 ring-white/10 mb-5 group-hover:ring-[#C9A227]/40 transition-all">
-                  <item.icon className="w-7 h-7 text-[#C9A227]" />
-                </div>
-                <h2 className="font-bold text-xl text-white mb-3">{t(item.keyTitle)}</h2>
-                <p className="text-[#AFC3D6] text-sm leading-relaxed">{t(item.keyDesc)}</p>
-              </motion.div>
-            ))}
+        <div className="relative mx-auto flex max-w-6xl flex-col gap-10 md:flex-row md:items-center">
+          <div className={`flex-1 ${isAr ? "md:pl-10 text-right" : "md:pr-10"}`}>
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45 }}
+              className={`inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-3 py-1 text-[11px] font-medium text-slate-200 backdrop-blur-sm ${isAr ? "flex-row-reverse" : ""}`}
+            >
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              {t("projectsTag")}
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.05 }}
+              className="mt-4 text-3xl font-bold tracking-tight text-white md:text-[2.7rem]"
+            >
+              {t("projects")}
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.12 }}
+              className="mt-4 max-w-xl text-[15px] leading-relaxed text-slate-100 md:text-[17px]"
+            >
+              {t("projectsIntro")}
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.2 }}
+              className={`mt-6 flex flex-wrap gap-3 text-[13px] text-slate-100 md:text-[14px] ${isAr ? "flex-row-reverse text-right" : ""}`}
+            >
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-4 py-2">
+                <span className="h-2 w-2 rounded-full bg-emerald-400" />
+                <span>{t("projectsHighlight1")}</span>
+              </div>
+              <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/10 px-4 py-2">
+                <span className="h-2 w-2 rounded-full bg-amber-300" />
+                <span>{t("projectsHighlight2")}</span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.55, delay: 0.28 }}
+              className="mt-8 grid grid-cols-3 gap-3 text-[12px] text-slate-100 md:text-[13px]"
+            >
+              <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-3 backdrop-blur-sm">
+                <p className="text-[9px] uppercase tracking-[0.18em] text-slate-400">{t("projectsStat1Label")}</p>
+                <p className="mt-1 text-sm font-semibold text-white md:text-base">{t("projectsStat1Value")}</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-3 backdrop-blur-sm">
+                <p className="text-[9px] uppercase tracking-[0.18em] text-slate-400">{t("projectsStat2Label")}</p>
+                <p className="mt-1 text-sm font-semibold text-white md:text-base">{t("projectsStat2Value")}</p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-3 backdrop-blur-sm">
+                <p className="text-[9px] uppercase tracking-[0.18em] text-slate-400">{t("projectsStat3Label")}</p>
+                <p className="mt-1 text-sm font-semibold text-white md:text-base">{t("projectsStat3Value")}</p>
+              </div>
+            </motion.div>
           </div>
-        </div>
-      </section>
 
-      {/* Coming Soon / CTA block */}
-      <section className="relative px-4 md:px-8 py-16 md:py-24">
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1624] via-[#0F1F33]/30 to-[#0B1624]" />
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/50 to-transparent" />
-        <div className="relative max-w-3xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="rounded-3xl border border-white/10 bg-[#0F1F33]/70 backdrop-blur-sm p-8 md:p-12 text-center"
-            style={{
-              boxShadow: "0 25px 50px -12px rgba(0,0,0,0.35), 0 0 0 1px rgba(201,162,39,0.08)",
-            }}
+            initial={{ opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.18 }}
+            className="relative mx-auto flex w-full max-w-md items-center justify-center md:flex-1"
           >
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              {t("Coming Soon")}
-            </h2>
-            <div className="w-16 h-0.5 rounded-full mx-auto mb-6 opacity-80" style={{ background: GOLD }} />
-            <p className="text-[#AFC3D6] text-lg mb-10">
-              {t("Exciting things are on the way!")}
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                to="/contact"
-                className={`inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-semibold text-white transition-all duration-300 hover:scale-[1.03] active:scale-[0.98] ${isAr ? "flex-row-reverse" : ""}`}
-                style={{
-                  background: "linear-gradient(135deg, #2F6FB0 0%, #0E2A47 100%)",
-                  boxShadow: "0 4px 20px rgba(47, 111, 176, 0.4), 0 0 0 1px rgba(201, 162, 39, 0.15)",
-                }}
-              >
-                <Mail className="w-5 h-5" />
-                {t("contact")}
-              </Link>
-              <Link
-                to="/gallery"
-                className={`inline-flex items-center gap-2 px-8 py-3.5 rounded-xl border border-white/20 bg-white/5 text-white font-semibold hover:bg-white/10 hover:border-[#C9A227]/40 transition-all duration-300 ${isAr ? "flex-row-reverse" : ""}`}
-              >
-                <ImageIcon className="w-5 h-5" />
-                {t("gallery")}
-              </Link>
-              <Link
-                to="/"
-                className={`inline-flex items-center gap-2 px-8 py-3.5 rounded-xl border border-white/15 text-[#AFC3D6] font-medium hover:text-white hover:bg-white/5 transition-colors ${isAr ? "flex-row-reverse" : ""}`}
-              >
-                <Home className="w-5 h-5" />
-                {t("Back to Home")}
-              </Link>
+            <div className="relative w-full overflow-hidden rounded-3xl border border-white/10 bg-[#050b15] p-5 shadow-[0_22px_70px_rgba(0,0,0,0.85)]">
+              <div className="relative flex flex-col gap-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] font-medium text-slate-300">{t("projectsMiniLabel")}</span>
+                  <div className="flex items-center gap-1.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-red-400" />
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-black/40 p-3 backdrop-blur-sm">
+                  <p className="text-[10px] uppercase tracking-[0.18em] text-slate-400">
+                    {t("projectsMiniSubtitle")}
+                  </p>
+                  <p className="mt-2 text-xs font-semibold text-white md:text-sm">{t("projectsMiniTitle")}</p>
+                  <p className="mt-1 text-[11px] text-slate-300 line-clamp-3">{t("projectsMiniText")}</p>
+                </div>
+
+                <div className="grid grid-cols-3 gap-2 text-[10px] text-slate-200 md:text-xs">
+                  <div className="rounded-xl bg-white/[0.03] p-2.5">
+                    <p className="text-[9px] text-slate-400">{t("projectsStat1Label")}</p>
+                    <p className="mt-1 text-xs font-semibold text-white md:text-sm">{t("projectsStat1Value")}</p>
+                  </div>
+                  <div className="rounded-xl bg-white/[0.03] p-2.5">
+                    <p className="text-[9px] text-slate-400">{t("projectsStat2Label")}</p>
+                    <p className="mt-1 text-xs font-semibold text-white md:text-sm">{t("projectsStat2Value")}</p>
+                  </div>
+                  <div className="rounded-xl bg-white/[0.03] p-2.5">
+                    <p className="text-[9px] text-slate-400">{t("projectsStat3Label")}</p>
+                    <p className="mt-1 text-xs font-semibold text-white md:text-sm">{t("projectsStat3Value")}</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
+
+      {/* Projects list */}
+      <section className="border-b border-white/5 bg-[#050816] px-4 pb-18 pt-10 md:px-10 md:pb-20">
+        <div className="mx-auto flex max-w-6xl flex-col gap-10 md:flex-row md:items-start">
+          <div className={`md:w-64 ${isAr ? "md:pl-10 text-right" : "md:pr-10"}`}>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.25em] text-slate-400">
+              {t("projectsSectionLabel")}
+            </p>
+            <p className="mt-3 text-[15px] text-slate-100 md:text-[17px]">{t("projectsSectionText")}</p>
+          </div>
+
+          <div className="flex-1 space-y-7">
+            {projects.map((project, index) => {
+              const Icon = project.icon;
+              return (
+                <motion.article
+                  key={project.keyTitle}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.45, delay: index * 0.08 }}
+                  className="group relative overflow-hidden rounded-3xl border border-white/8 bg-[#050b15] p-5 shadow-[0_18px_55px_rgba(0,0,0,0.8)] md:p-7"
+                >
+                  <div className={`relative grid gap-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] ${isAr ? "md:direction-rtl" : ""}`}>
+                    <div className="flex flex-col gap-4">
+                      <div className="flex items-center gap-4">
+                        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/[0.03] ring-1 ring-white/10 md:h-14 md:w-14">
+                          <Icon className="h-6 w-6 text-emerald-400" />
+                        </div>
+                        <div className={isAr ? "text-right" : ""}>
+                          <div className="inline-flex items-center gap-2">
+                            <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-sky-400 md:text-xs">
+                              {t("projectIndex", { index: index + 1 })}
+                            </span>
+                            <span className="h-0.5 w-6 rounded-full bg-white/10" />
+                          </div>
+                          <h2 className="mt-2 text-lg font-semibold text-white md:text-2xl">
+                            {t(project.keyTitle)}
+                          </h2>
+                        </div>
+                      </div>
+
+                      <div className={`text-[13px] text-slate-100 md:text-[15px] ${isAr ? "text-right" : ""}`}>
+                        <p className="leading-relaxed font-medium">{t(project.keyDesc)}</p>
+                        <div className={`mt-4 flex flex-wrap items-center gap-2 text-[11px] md:text-[12px] ${isAr ? "flex-row-reverse" : ""}`}>
+                          <span className="rounded-full bg-black/40 px-3 py-1 text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.2em] text-slate-100">
+                            {t(project.badge)}
+                          </span>
+                          <span className="rounded-full border border-white/10 bg-white/[0.02] px-2.5 py-1 text-[10px] md:text-[11px] text-slate-100">
+                            {t("projectDuration")}
+                          </span>
+                          <span className="rounded-full border border-white/10 bg-white/[0.02] px-2.5 py-1 text-[10px] md:text-[11px] text-slate-100">
+                            {t("projectLocation")}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="relative hidden h-full md:block">
+                      <div className="grid h-full grid-cols-2 gap-2">
+                        {projectImages[index].map((src, imgIdx) => (
+                          <div
+                            key={src}
+                            className={`relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] ${imgIdx === 0 ? "row-span-2" : ""}`}
+                          >
+                            <img
+                              src={`/${src}`}
+                              alt={`${t(project.keyTitle)} ${imgIdx + 1}`}
+                              className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                            />
+                            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </motion.article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+    
     </div>
   );
 };

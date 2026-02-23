@@ -47,20 +47,21 @@ const Contact = () => {
                 </form>
             </section>
 
-            {/* Map Section */}
+            {/* Map Section — موقع الشركة: بابل، الحلة، حي الصحة، العراق */}
             <section className="mb-16">
                 <h2 className="text-3xl font-bold text-center mb-8">Our Location</h2>
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-lg">
                     <iframe
-                        title="Google Map"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509198!2d144.9537353153163!3d-37.81627997975157!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f0f0f0f%3A0x0!2sYour%20Business%20Name!5e0!3m2!1sen!2sus!4v1616161616161!5m2!1sen!2sus"
+                        title="Khairat Alrabab — Babylon, Hillah, Hay Alsaha, Iraq"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d288.0306685987557!2d47.7875769!3d30.5550455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fc498c665bf8da7%3A0xb223fc750bda53ab!2z2YXYsdmD2LIg2KjYsdisINiz2YjYsdmF2KfYqCDYp9mE2YPYsdio2Iwg2KjZitiq2KfYjCDYp9mE2LPYqNmK2KjZhNip!5e0!3m2!1sen!2siq!4v1717945600000!5m2!1sen!2siq"
                         width="100%"
                         height="450"
                         style={{ border: 0 }}
                         allowFullScreen=""
                         loading="lazy"
-                    ></iframe>
+                    />
                 </div>
+                <p className="text-center text-gray-600 mt-3">Babylon — Hillah — Hay Alsaha, Iraq</p>
             </section>
 
             {/* FAQ Section */}
